@@ -16,7 +16,7 @@
 <div class="bg-white w-72 h-screen drop-shadow">
 	<!-- Brand banner -->
 	<div class="text-2xl py-12 text-center select-none">
-		<span class="p-1 font-extrabold bg-brand-primary-dark text-brand-white">STRONG</span>
+		<span class="p-1 font-extrabold bg-brand-primary text-white">STRONG</span>
 		<span class="text-brand-primary-dark">BASTION</span>
 	</div>
 	<div class="bg-gray-200 h-[1px] mb-4" />
@@ -27,9 +27,9 @@
 				<div class="flex gap-2">
 					<Icon
 						name={item.icon}
-						class={routeId === item.routeId ? 'fill-brand-primary-dark' : 'fill-gray-400'}
+						class={routeId === item.routeId ? 'fill-brand-primary' : 'fill-gray-400'}
 					/>
-					<span class={routeId === item.routeId ? 'text-brand-primary-dark' : 'text-gray-400'}
+					<span class={routeId === item.routeId ? 'text-brand-primary' : 'text-gray-400'}
 						>{item.name}</span
 					>
 				</div>

@@ -8,7 +8,7 @@
 	<aside class="sticky top-0">
 		<Sidebar routeId={$page.routeId} />
 	</aside>
-	<main class="grow h-screen bg-brand-white">
+	<main class="grow h-screen bg-brand-background">
 		<slot />
 	</main>
 </div>
