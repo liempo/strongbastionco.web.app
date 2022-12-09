@@ -6,10 +6,10 @@
 </script>
 
 <div class="flex">
-	<aside class="sticky top-0">
+	<aside class="sticky top-0 h-screen">
 		<Sidebar routeId={$page.routeId} routeItems={data.routes} />
 	</aside>
-	<main class="grow h-screen bg-brand-background">
+	<main class="grow bg-brand-background">
 		<slot />
 	</main>
 </div>
