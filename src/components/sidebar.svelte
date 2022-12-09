@@ -1,16 +1,8 @@
 <script lang="ts">
 	import Icon from '@/components/icon.svelte'
-	import { onMount } from 'svelte'
-	import type { SidebarItem } from './component.types'
-
-	export let items: SidebarItem[] = [
-		{
-			name: 'Dashboard',
-			icon: 'home',
-			routeId: '/'
-		}
-	]
-	export let routeId: string
+	import type { RouteItem } from '@/types/app.types'
+	export let routeId: string | null
+	export let routeItems: RouteItem[]
 </script>
 
 <div class="bg-white w-72 h-screen drop-shadow">
@@ -22,7 +14,7 @@
 	<div class="bg-gray-200 h-[1px] mb-4" />
 	<!-- Navigation links -->
 	<ul class="text-lg font-semibold">
-		{#each items as item}
+		{#each routeItems as item}
 			<li class="flex justify-between py-4 pl-8 pr-4 align-middle">
 				<div class="flex gap-2">
 					<Icon
