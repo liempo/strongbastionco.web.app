@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation'
 	import Icon from '@/components/icon.svelte'
 	import type { RouteItem } from '@/types/app.types'
 	export let routeId: string | null
@@ -16,7 +17,7 @@
 	<ul class="text-lg font-semibold">
 		{#each routeItems as item}
 			<li class="flex justify-between py-4 pl-8 pr-4 align-middle">
-				<div class="flex gap-2">
+				<button class="flex gap-2" on:click={() => goto(item.routeId)}>
 					<Icon
 						name={item.icon}
 						class={routeId === item.routeId ? 'fill-brand-primary' : 'fill-gray-400'}
@@ -24,8 +25,7 @@
 					<span class={routeId === item.routeId ? 'text-brand-primary' : 'text-gray-400'}
 						>{item.name}</span
 					>
-				</div>
-
+				</button>
 				{#if routeId === item.routeId}
 					<div class="h-8 w-1 bg-brand-accent rounded" />
 				{/if}
