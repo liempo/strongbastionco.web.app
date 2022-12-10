@@ -12,34 +12,32 @@
 	}
 </script>
 
-<div class="p-4 mx-auto">
-	<div class="overflow-x-auto">
-		<div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
-			<table class="min-w-full leading-normal">
-				<thead>
+<div class="overflow-x-auto">
+	<div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
+		<table class="min-w-full leading-normal">
+			<thead>
+				<tr>
+					{#each headers as header}
+						<th
+							scope="col"
+							class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
+						>
+							{header}
+						</th>
+					{/each}
+				</tr>
+			</thead>
+			<tbody>
+				{#each data as row}
 					<tr>
-						{#each headers as header}
-							<th
-								scope="col"
-								class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
-							>
-								{header}
-							</th>
+						{#each row as cell}
+							<td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+								<p class="text-gray-900 whitespace-no-wrap">{cell}</p>
+							</td>
 						{/each}
 					</tr>
-				</thead>
-				<tbody>
-					{#each data as row}
-						<tr>
-							{#each row as cell}
-								<td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-									<p class="text-gray-900 whitespace-no-wrap">{cell}</p>
-								</td>
-							{/each}
-						</tr>
-					{/each}
-				</tbody>
-			</table>
-		</div>
+				{/each}
+			</tbody>
+		</table>
 	</div>
 </div>
