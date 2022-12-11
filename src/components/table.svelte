@@ -12,7 +12,7 @@
 	}
 </script>
 
-<div class="overflow-x-auto">
+<div class="overflow-x-auto drop-shadow">
 	<div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
 		<table class="min-w-full leading-normal">
 			<thead>
