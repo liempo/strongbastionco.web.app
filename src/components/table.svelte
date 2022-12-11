@@ -16,12 +16,9 @@
 	<div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
 		<table class="min-w-full leading-normal">
 			<thead>
-				<tr>
+				<tr class="text-sm font-normal text-left text-brand-primary uppercase">
 					{#each headers as header}
-						<th
-							scope="col"
-							class="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200"
-						>
+						<th scope="col" class="px-5 py-3 bg-white border-b border-gray-200">
 							{header}
 						</th>
 					{/each}
@@ -29,10 +26,10 @@
 			</thead>
 			<tbody>
 				{#each data as row}
-					<tr>
+					<tr class="text-brand-primary text-sm">
 						{#each row as cell}
-							<td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
-								<p class="text-gray-900 whitespace-no-wrap">{cell}</p>
+							<td class="px-5 py-5 bg-white border-b border-gray-200">
+								<p class="whitespace-no-wrap">{cell}</p>
 							</td>
 						{/each}
 					</tr>
