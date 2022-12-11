@@ -6,15 +6,17 @@
 
 <div class="flex justify-between mb-4 items-center">
 	<h2 class="text-2xl font-medium">{title}</h2>
-
-	<div class="p-2 bg-white rounded-full drop-shadow">
+	<div class="px-2 py-1.5 bg-white rounded-full drop-shadow flex">
 		<div class="flex justify-end items-center bg-brand-background rounded-full">
-			<Icon name="search" class="m-2 fill-brand-primary" />
+			<Icon name="search" class="mx-4 fill-brand-primary" size={16} />
 			<input
 				type="text"
 				class="py-2 bg-transparent text-gray-700 placeholder-gray-400 focus:outline-none"
 				placeholder="Search"
 			/>
+		</div>
+		<div class="rounded-full bg-brand-primary p-2 ml-4">
+			<Icon name="user" class="fill-white" />
 		</div>
 	</div>
 </div>
