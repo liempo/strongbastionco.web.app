@@ -1,12 +1,9 @@
 <script lang="ts">
 	import Chart from '@/components/chart.svelte'
-	import Header from '@/components/header.svelte'
 	import Icon from '@/components/icon.svelte'
 </script>
 
 <content>
-	<Header title="Overview" />
-
 	<!-- Summary of sales, expenses, and income -->
 	<summary class="flex justify-evenly gap-4">
 		<div class="rounded-2xl drop-shadow-sm p-6 bg-white flex gap-2 items-center flex-1">
