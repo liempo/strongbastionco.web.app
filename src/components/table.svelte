@@ -1,33 +1,35 @@
 <script lang="ts">
 	import Icon from './icon.svelte'
 
-	export let headers: string[]
-	export let data: any[]
+	type TableData = Record<string, any>[]
+	export let data: TableData
 
-	// Pass function as props instead of using dispatch
-	export let onRowClick: (row: any) => void | undefined
+	type TableRowMenu = {
+		icon: string
+		onClick: () => void
+	}
+	export let menu: TableRowMenu[] | undefined = undefined
 
-	// check if headers and data is not empty
-	$: if (headers.length === 0 || data.length === 0) {
-		throw new Error('Headers and data must not be empty')
-	}
-	// check if headers and data has the same length
-	$: if (headers.length !== data[0].length) {
-		throw new Error('Headers and data must have the same length')
-	}
+	// Decide whether or not to show the menu (overwrite to force)
+	$: isMenuIconVisible = menu !== undefined && menu.length > 0
+	// Get all the headers from the data
+	$: headers = data
+		.map((row) => Object.keys(row))
+		.reduce((prev, next) => prev.concat(next))
+		.filter((value, index, self) => self.indexOf(value) === index)
 </script>
 
 <div class="overflow-x-auto drop-shadow">
 	<div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
 		<table class="min-w-full leading-normal">
 			<thead>
-				<tr class="text-sm font-normal text-left text-brand-primary uppercase">
+				<tr class="text-sm font-ormal text-left text-brand-primary uppercase">
 					{#each headers as header}
 						<th scope="col" class="px-5 py-3 bg-white border-b border-gray-200">
 							{header}
 						</th>
 					{/each}
-					{#if onRowClick !== undefined}
+					{#if isMenuIconVisible}
 						<td class="px-5 py-5 bg-white border-b border-gray-200" />
 					{/if}
 				</tr>
@@ -35,19 +37,15 @@
 			<tbody>
 				{#each data as row}
 					<tr class="text-brand-primary text-sm">
-						{#each row as cell}
+						{#each headers as key}
 							<td class="px-5 py-5 bg-white border-b border-gray-200">
-								<p class="whitespace-no-wrap">{cell}</p>
+								<p class="whitespace-no-wrap">{row[key]}</p>
 							</td>
 						{/each}
 
-						{#if onRowClick !== undefined}
+						{#if isMenuIconVisible}
 							<td class="bg-white border-b border-gray-200">
-								<button
-									on:click={() => {
-										onRowClick(row)
-									}}
-								>
+								<button>
 									<Icon name="menu" size={24} class="fill-brand-primary" />
 								</button>
 							</td>
