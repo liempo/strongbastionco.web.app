@@ -1,6 +1,11 @@
 <script lang="ts">
+	import Icon from './icon.svelte'
+
 	export let headers: string[]
 	export let data: any[]
+
+	// Pass function as props instead of using dispatch
+	export let onRowClick: (row: any) => void | undefined
 
 	// check if headers and data is not empty
 	$: if (headers.length === 0 || data.length === 0) {
@@ -22,6 +27,9 @@
 							{header}
 						</th>
 					{/each}
+					{#if onRowClick !== undefined}
+						<td class="px-5 py-5 bg-white border-b border-gray-200" />
+					{/if}
 				</tr>
 			</thead>
 			<tbody>
@@ -32,6 +40,18 @@
 								<p class="whitespace-no-wrap">{cell}</p>
 							</td>
 						{/each}
+
+						{#if onRowClick !== undefined}
+							<td class="bg-white border-b border-gray-200">
+								<button
+									on:click={() => {
+										onRowClick(row)
+									}}
+								>
+									<Icon name="menu" size={24} class="fill-brand-primary" />
+								</button>
+							</td>
+						{/if}
 					</tr>
 				{/each}
 			</tbody>
