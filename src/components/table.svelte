@@ -1,27 +1,22 @@
 <script lang="ts">
 	import Icon from './icon.svelte'
+	import Menu from './menu.svelte'
+	import type { MenuItem, TableData } from '@/types/component.types'
 
-	type TableData = Record<string, any>[]
 	export let data: TableData
-
-	type TableRowMenu = {
-		icon: string
-		onClick: () => void
-	}
-	export let menu: TableRowMenu[] | undefined = undefined
-
-	// Decide whether or not to show the menu (overwrite to force)
-	$: isMenuIconVisible = menu !== undefined && menu.length > 0
-	// Get all the headers from the data
-	$: headers = data
+	$: headers = data // Get the headers from the data
 		.map((row) => Object.keys(row))
 		.reduce((prev, next) => prev.concat(next))
 		.filter((value, index, self) => self.indexOf(value) === index)
+
+	// Decide whether or not to show the menu (overwrite to force)
+	export let menu: MenuItem[] = []
+	$: isMenuIconVisible = menu.length > 0
 </script>
 
 <div class="overflow-x-auto drop-shadow">
 	<div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
-		<table class="min-w-full leading-normal">
+		<table class="min-w-full leading-normal table-auto">
 			<thead>
 				<tr class="text-sm font-ormal text-left text-brand-primary uppercase">
 					{#each headers as header}
@@ -30,7 +25,7 @@
 						</th>
 					{/each}
 					{#if isMenuIconVisible}
-						<td class="px-5 py-5 bg-white border-b border-gray-200" />
+						<td class="px-5 py-5 bg-white border-b border-gray-200 w-12" />
 					{/if}
 				</tr>
 			</thead>
@@ -45,9 +40,9 @@
 
 						{#if isMenuIconVisible}
 							<td class="bg-white border-b border-gray-200">
-								<button>
+								<Menu items={menu}>
 									<Icon name="menu" size={24} class="fill-brand-primary" />
-								</button>
+								</Menu>
 							</td>
 						{/if}
 					</tr>
