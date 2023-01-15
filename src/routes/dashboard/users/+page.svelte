@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Table from '@/components/table.svelte'
-	import type { TableData } from '@/types/component.types'
+	import type { MenuItem, TableData } from '@/types/component.types'
 
 	// Generate random tableData
 	let data: TableData = []
@@ -13,16 +13,25 @@
 		})
 	}
 
-	let menu = [
+	let menu: MenuItem[] = [
 		{
+			id: 'edit',
 			icon: 'user',
 			label: 'Edit'
 		},
 		{
+			id: 'delete',
 			icon: 'user',
 			label: 'Delete'
 		}
 	]
 </script>
 
-<Table {data} {menu} />
+<Table
+	{data}
+	{menu}
+	on:row-action-click={(e) => {
+		const { menuItemId, rowIndex } = e.detail
+		console.log(menuItemId, rowIndex)
+	}}
+/>

@@ -1,7 +1,8 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte'
 	import Icon from './icon.svelte'
 	import Menu from './menu.svelte'
-	import type { MenuItem, TableData } from '@/types/component.types'
+	import type { MenuItem, TableData, TableRow } from '@/types/component.types'
 
 	export let data: TableData
 	$: headers = data // Get the headers from the data
@@ -12,6 +13,14 @@
 	// Decide whether or not to show the menu (overwrite to force)
 	export let menu: MenuItem[] = []
 	$: isMenuIconVisible = menu.length > 0
+	let dispatcher = createEventDispatcher()
+	// Dispatch an event when a menu item is clicked with row data
+	function onRowActionClick(menuId: string, rowIndex: number) {
+		dispatcher('row-action-click', {
+			menuItemId: menuId,
+			rowIndex: rowIndex
+		})
+	}
 </script>
 
 <div class="overflow-x-auto drop-shadow">
@@ -30,7 +39,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each data as row}
+				{#each data as row, index}
 					<tr class="text-brand-primary text-sm">
 						{#each headers as key}
 							<td class="px-5 py-5 bg-white border-b border-gray-200">
@@ -40,7 +49,10 @@
 
 						{#if isMenuIconVisible}
 							<td class="bg-white border-b border-gray-200">
-								<Menu items={menu}>
+								<Menu
+									items={menu}
+									on:menu-item-click={(e) => onRowActionClick(e.detail.menuItemId, index)}
+								>
 									<Icon name="menu" size={24} class="fill-brand-primary" />
 								</Menu>
 							</td>
