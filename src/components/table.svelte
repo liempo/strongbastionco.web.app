@@ -5,10 +5,13 @@
 	import type { MenuItem, TableData, TableRow } from '@/types/component.types'
 
 	export let data: TableData
-	$: headers = data // Get the headers from the data
-		.map((row) => Object.keys(row))
-		.reduce((prev, next) => prev.concat(next))
-		.filter((value, index, self) => self.indexOf(value) === index)
+	$: headers =
+		data.length > 0
+			? data // Get the headers from the data
+					.map((row) => Object.keys(row))
+					.reduce((prev, next) => prev.concat(next))
+					.filter((value, index, self) => self.indexOf(value) === index)
+			: []
 
 	// Decide whether or not to show the menu (overwrite to force)
 	export let menu: MenuItem[] = []

@@ -15,23 +15,25 @@
 
 	let menu: MenuItem[] = [
 		{
-			id: 'edit',
-			icon: 'user',
-			label: 'Edit'
-		},
-		{
 			id: 'delete',
 			icon: 'user',
 			label: 'Delete'
 		}
 	]
+
+	const onRowActionClick = (e: CustomEvent) => {
+		const { menuItemId, rowIndex } = e.detail
+		switch (menuItemId) {
+			case 'delete':
+				// Delete the row and update the table
+				data = data.filter((row) => row.id !== rowIndex)
+
+				break
+
+			default:
+				break
+		}
+	}
 </script>
 
-<Table
-	{data}
-	{menu}
-	on:row-action-click={(e) => {
-		const { menuItemId, rowIndex } = e.detail
-		console.log(menuItemId, rowIndex)
-	}}
-/>
+<Table {data} {menu} on:row-action-click={onRowActionClick} />
