@@ -24,6 +24,7 @@
 	const dispatcher = createEventDispatcher()
 	const onMenuItemClick = (menuItemId: string) => {
 		dispatcher('menu-item-click', { menuItemId })
+		isDropdownOpen = false
 	}
 </script>
 
