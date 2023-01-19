@@ -3,15 +3,16 @@
 	import type { LayoutData } from './$types'
 	import Sidebar from '@/components/sidebar.svelte'
 	import Header from '@/components/header.svelte'
-
-	const { page } = getStores()
+	import { searchQuery } from '@/lib/store'
 
 	export let data: LayoutData
 
+	const { page } = getStores()
 	const { routes } = data
 	let title: string
 
 	page.subscribe(($page) => {
+		$searchQuery = ''
 		title = routes.find((r) => r.routeId === $page.routeId)?.name ?? ''
 	})
 </script>

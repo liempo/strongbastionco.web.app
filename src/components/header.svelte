@@ -1,6 +1,6 @@
 <script lang="ts">
+	import { searchQuery } from '@/lib/store'
 	import Icon from './icon.svelte'
-
 	export let title: string
 </script>
 
@@ -10,6 +10,7 @@
 		<div class="flex justify-end items-center bg-brand-background rounded-full">
 			<Icon name="search" class="mx-4 fill-brand-primary" size={16} />
 			<input
+				bind:value={$searchQuery}
 				type="text"
 				class="py-2 bg-transparent text-gray-700 placeholder-gray-400 focus:outline-none"
 				placeholder="Search"
