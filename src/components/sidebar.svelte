@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
+	import Banner from './banner.svelte'
 	import Icon from '@/components/icon.svelte'
 	import type { RouteItem } from '@/types/app.types'
 	export let routeId: string | null
@@ -8,10 +9,8 @@
 
 <div class="bg-white w-72 h-screen drop-shadow">
 	<!-- Brand banner -->
-	<div class="text-2xl py-12 text-center select-none">
-		<span class="p-1 font-extrabold bg-brand-primary text-white">STRONG</span>
-		<span class="text-brand-primary-dark">BASTION</span>
-	</div>
+	<Banner />
+
 	<div class="bg-gray-200 h-[1px] mb-4" />
 	<!-- Navigation links -->
 	<ul class="text-lg font-semibold">
