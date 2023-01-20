@@ -16,16 +16,16 @@
 	<ul class="text-lg font-semibold">
 		{#each routeItems as item}
 			<li class="flex justify-between py-4 pl-8 pr-4 align-middle">
-				<button class="flex gap-2" on:click={() => goto(item.routeId)}>
+				<button class="flex gap-2" on:click={() => goto(item.id)}>
 					<Icon
 						name={item.icon}
-						class={routeId === item.routeId ? 'fill-brand-primary' : 'fill-gray-400'}
+						class={routeId === item.id ? 'fill-brand-primary' : 'fill-gray-400'}
 					/>
-					<span class={routeId === item.routeId ? 'text-brand-primary' : 'text-gray-400'}
+					<span class={routeId === item.id ? 'text-brand-primary' : 'text-gray-400'}
 						>{item.name}</span
 					>
 				</button>
-				{#if routeId === item.routeId}
+				{#if routeId === item.id}
 					<div class="h-8 w-1 bg-brand-accent rounded" />
 				{/if}
 			</li>
