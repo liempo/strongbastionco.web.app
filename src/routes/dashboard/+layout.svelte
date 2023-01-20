@@ -13,7 +13,7 @@
 
 	page.subscribe(($page) => {
 		$searchQuery = ''
-		title = routes.find((r) => r.routeId === $page.routeId)?.name ?? ''
+		title = routes.find((r) => r.id === $page.route.id)?.name ?? ''
 	})
 </script>
 
@@ -23,7 +23,7 @@
 
 <div class="flex">
 	<aside class="sticky top-0 h-screen">
-		<Sidebar routeId={$page.routeId} routeItems={data.routes} />
+		<Sidebar routeId={$page.route.id} routeItems={data.routes} />
 	</aside>
 	<main class="grow bg-brand-background p-4">
 		<Header {title} />

@@ -1,21 +1,16 @@
+import type { RouteItem } from '@/types/app.types'
 import type { LayoutLoad } from './$types'
 
-type Route = {
-	name: string
-	icon: string
-	routeId: string
-}
-
-const routes: Route[] = [
+const routes: RouteItem[] = [
 	{
+		id: '/dashboard/overview',
 		name: 'Overview',
-		icon: 'home',
-		routeId: '/dashboard/overview'
+		icon: 'home'
 	},
 	{
+		id: '/dashboard/users',
 		name: 'Users',
-		icon: 'user',
-		routeId: '/dashboard/users'
+		icon: 'user'
 	}
 ]
 

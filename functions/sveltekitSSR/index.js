@@ -19176,7 +19176,7 @@ var Server = class {
       app_template,
       app_template_contains_nonce: false,
       error_template,
-      version: "1674177858544"
+      version: "1674178800688"
     };
   }
   /**
