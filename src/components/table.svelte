@@ -2,7 +2,7 @@
 	import { createEventDispatcher } from 'svelte'
 	import Icon from './icon.svelte'
 	import Menu from './menu.svelte'
-	import type { MenuItem, TableData, TableRow } from '@/types/component.types'
+	import type { MenuItem, TableData } from '@/types/component.types'
 
 	export let data: TableData
 	$: headers =
